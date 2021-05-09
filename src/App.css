@@ -173,8 +173,14 @@ header {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	height: 30px;
+	/* height: 30px; */
 	border: 2px solid gray;
 	margin-left: 20px;
 	font-weight: 600;
+	padding: 5px 10px;
+	margin-bottom: 20px;
+}
+
+.border-btn:hover {
+	cursor: pointer;
 }

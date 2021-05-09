@@ -11,17 +11,22 @@ const Country = () => {
 	const [borders, setBorders] = useState<any[]>([]);
 
 	useEffect(() => {
+		setBorders([]);
 		location.state.borders.forEach((item: any) => {
 			fetch(`https://restcountries.eu/rest/v2/alpha/${item}`)
 				.then((res) => res.json())
 				.then((data) => {
-					const newData = borders;
-					newData.push(data);
-					setBorders(newData);
+					setBorders((prev) => [...prev, data]);
+					console.log("data", data);
 				});
 		});
-		console.log(borders);
-	}, []);
+	}, [location]);
+
+	const displayBorders = () => {
+		return borders.length > 0
+			? borders.map((item) => <BorderButton data={item} />)
+			: " 0";
+	};
 
 	return (
 		<>
@@ -77,10 +82,8 @@ const Country = () => {
 						</div>
 					</div>
 					<div className="border-container">
-						<p className="bold-attr">Border Countries:</p>
-						{borders.map((item) => (
-							<BorderButton data={item} />
-						))}
+						<p className="bold-attr">Border Countries: </p>
+						{displayBorders()}
 					</div>
 				</div>
 			</div>
@@ -88,8 +91,16 @@ const Country = () => {
 	);
 };
 
-const BorderButton: React.FC<{ data: any }> = ({ data }) => (
-	<div className="border-btn">{data.name}</div>
-);
+const BorderButton: React.FC<{ data: any }> = ({ data }) => {
+	const history = useHistory();
+	return (
+		<div
+			className="border-btn"
+			onClick={() => history.push(`/country/${data.name}`, { ...data })}
+		>
+			{data.name}
+		</div>
+	);
+};
 
 export default Country;
