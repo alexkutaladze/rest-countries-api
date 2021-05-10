@@ -20,7 +20,7 @@ export const Heading = styled.h1`
 	}
 
 	@media (max-width: 1440px) {
-		font-size: 1.2rem;
+		font-size: 1rem;
 	}
 `;
 
@@ -36,6 +36,6 @@ export const Paragraph = styled.p`
 	font-size: 1.2rem;
 
 	@media (max-width: 1440px) {
-		font-size: 1rem;
+		font-size: 0.8rem;
 	}
 `;
