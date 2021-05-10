@@ -1,11 +1,11 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { BiMoon, BiSun } from "react-icons/bi";
 import { useHistory } from "react-router";
 import {
+	Header,
 	Heading,
 	Paragraph,
 	ThemeSwitcher,
-	Header,
 } from "../style/HeaderStyles";
 import ThemeContext from "../style/theme/themeContext";
 

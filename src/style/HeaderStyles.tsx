@@ -7,7 +7,7 @@ export const Header = styled.header`
 	padding-left: 10%;
 	padding-right: 10%;
 	justify-content: space-between;
-	background: ${(props) => props.theme.background};
+	background: ${(props) => props.theme.elements};
 	color: ${(props) => props.theme.text};
 `;
 
@@ -17,6 +17,10 @@ export const Heading = styled.h1`
 
 	&:hover {
 		cursor: pointer;
+	}
+
+	@media (max-width: 1440px) {
+		font-size: 1.2rem;
 	}
 `;
 
@@ -30,4 +34,8 @@ export const Paragraph = styled.p`
 	font-weight: 600;
 	padding-left: 10px;
 	font-size: 1.2rem;
+
+	@media (max-width: 1440px) {
+		font-size: 1rem;
+	}
 `;

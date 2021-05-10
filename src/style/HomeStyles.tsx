@@ -8,6 +8,10 @@ export const SearchContainer = styled.div`
 	color: ${(props) => props.theme.text};
 	display: flex;
 	justify-content: space-between;
+
+	@media (max-width: 1440px) {
+		flex-direction: column;
+	}
 `;
 
 export const InputContainer = styled.div`
@@ -18,6 +22,11 @@ export const InputContainer = styled.div`
 	display: flex;
 	align-items: center;
 	border-radius: 4px;
+
+	@media (max-width: 1440px) {
+		width: auto;
+		margin-bottom: 20px;
+	}
 `;
 
 export const Input = styled.input`
@@ -44,6 +53,10 @@ export const Dropdown = styled.select`
 	&:focus {
 		outline: none;
 	}
+
+	@media (max-width: 1440px) {
+		width: 60%;
+	}
 `;
 
 export const List = styled.div`
@@ -54,4 +67,5 @@ export const List = styled.div`
 	column-gap: 6.55rem;
 	row-gap: 2rem;
 	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	place-items: center;
 `;

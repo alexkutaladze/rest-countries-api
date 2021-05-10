@@ -27,7 +27,6 @@ const Country = () => {
 				.then((res) => res.json())
 				.then((data) => {
 					setBorders((prev) => [...prev, data]);
-					console.log("data", data);
 				});
 		});
 	}, [location]);
@@ -37,6 +36,13 @@ const Country = () => {
 			? borders.map((item) => <BorderButton data={item} />)
 			: " 0";
 	};
+
+	const languages = () => {
+		let langs = location.state.languages.map((item: any) => item.name);
+		return langs;
+	};
+
+	console.log("langug", languages());
 
 	return (
 		<Container>
@@ -87,7 +93,7 @@ const Country = () => {
 							</p>
 							<p>
 								<Bold className="bold-attr">Languages: </Bold>
-								{location.state.languages[0].name}
+								{languages().join(", ")}
 							</p>
 						</div>
 					</Details>

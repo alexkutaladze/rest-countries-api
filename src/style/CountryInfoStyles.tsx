@@ -3,6 +3,7 @@ import styled from "styled-components/macro";
 export const Container = styled.div`
 	background: ${(props) => props.theme.background};
 	color: ${(props) => props.theme.text};
+	width: 100vw;
 	height: 100vh;
 `;
 
@@ -40,6 +41,16 @@ export const Info = styled.div`
 	& img {
 		width: 600px;
 		height: 400px;
+
+		@media (max-width: 1440px) {
+			width: 300px;
+			height: 200px;
+			margin-bottom: 20px;
+		}
+	}
+
+	@media (max-width: 1440px) {
+		flex-direction: column;
 	}
 `;
 
@@ -50,6 +61,10 @@ export const DetailsContainer = styled.div`
 		font-size: 2rem;
 		margin: 0;
 	}
+
+	@media (max-width: 1440px) {
+		width: 100%;
+	}
 `;
 
 export const Details = styled.div`
@@ -57,12 +72,24 @@ export const Details = styled.div`
 	display: flex;
 	justify-content: space-between;
 	margin-bottom: 50px;
+
+	@media (max-width: 1440px) {
+		flex-direction: column;
+	}
 `;
 
 export const BordersContainer = styled.div`
 	display: flex;
 	align-items: center;
 	flex-wrap: wrap;
+
+	@media (max-width: 1440px) {
+		flex-direction: column;
+		align-items: flex-start;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+		column-gap: 1.8rem;
+	}
 `;
 
 export const Border = styled.div`

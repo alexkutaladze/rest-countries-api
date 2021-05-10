@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { BiMoon } from "react-icons/bi";
 import { AiOutlineSearch } from "react-icons/ai";
 import CountryComponent from "../components/CountryComponent";
 import HeaderComponent from "../components/Header";
 import {
+	Dropdown,
 	Input,
 	InputContainer,
-	SearchContainer,
-	Dropdown,
 	List,
+	SearchContainer,
 } from "../style/HomeStyles";
 
 const Home = () => {
