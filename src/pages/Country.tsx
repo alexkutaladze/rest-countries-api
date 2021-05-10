@@ -1,7 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { BiArrowBack } from "react-icons/bi";
 import { useHistory, useLocation } from "react-router-dom";
-import Header from "../components/Header";
+import HeaderComponent from "../components/Header";
+import { Bold } from "../style/CountryCardStyles";
+import {
+	Back,
+	Border,
+	BordersContainer,
+	Container,
+	Details,
+	DetailsContainer,
+	Info,
+} from "../style/CountryInfoStyles";
 
 const populationFormat = new Intl.NumberFormat("en-US");
 
@@ -29,77 +39,76 @@ const Country = () => {
 	};
 
 	return (
-		<>
-			<Header />
-			<div className="back" onClick={() => history.goBack()}>
+		<Container>
+			<HeaderComponent />
+			<Back onClick={() => history.goBack()}>
 				<BiArrowBack />
 				<p>Back</p>
-			</div>
-			<div className="country-info">
+			</Back>
+			<Info>
 				<img src={location.state.flag} alt="flag" />
-				<div className="country-details">
+				<DetailsContainer className="country-details">
 					<h2>{location.state.name}</h2>
-					<div className="more-details">
+					<Details>
 						<div>
 							<p>
-								<span className="bold-attr">Native Name: </span>
+								<Bold className="bold-attr">Native Name: </Bold>
 								{location.state.nativeName}
 							</p>
 							<p>
-								<span className="bold-attr">Population: </span>
+								<Bold className="bold-attr">Population: </Bold>
 								{populationFormat.format(
 									location.state.population
 								)}
 							</p>
 							<p>
-								<span className="bold-attr">Region: </span>
+								<Bold className="bold-attr">Region: </Bold>
 								{location.state.region}
 							</p>
 							<p>
-								<span className="bold-attr">Sub Region: </span>
+								<Bold className="bold-attr">Sub Region: </Bold>
 								{location.state.subregion}
 							</p>
 							<p>
-								<span className="bold-attr">Capital: </span>
+								<Bold className="bold-attr">Capital: </Bold>
 								{location.state.capital}
 							</p>
 						</div>
 						<div>
 							<p>
-								<span className="bold-attr">
+								<Bold className="bold-attr">
 									Top Level Domain:{" "}
-								</span>
+								</Bold>
 								{location.state.topLevelDomain}
 							</p>
 							<p>
-								<span className="bold-attr">Currencies: </span>
+								<Bold className="bold-attr">Currencies: </Bold>
 								{location.state.currencies[0].name}
 							</p>
 							<p>
-								<span className="bold-attr">Languages: </span>
+								<Bold className="bold-attr">Languages: </Bold>
 								{location.state.languages[0].name}
 							</p>
 						</div>
-					</div>
-					<div className="border-container">
-						<p className="bold-attr">Border Countries: </p>
+					</Details>
+					<BordersContainer className="border-container">
+						<Bold>Border Countries: </Bold>
 						{displayBorders()}
-					</div>
-				</div>
-			</div>
-		</>
+					</BordersContainer>
+				</DetailsContainer>
+			</Info>
+		</Container>
 	);
 };
 
 const BorderButton: React.FC<{ data: any }> = ({ data }) => {
 	const history = useHistory();
 	return (
-		<div
-			className="border-btn"
+		<Border
 			onClick={() => history.push(`/country/${data.name}`, { ...data })}
 		>
 			{data.name}
-		</div>
+		</Border>
 	);
 };
 

@@ -2,7 +2,14 @@ import React, { useEffect, useState } from "react";
 import { BiMoon } from "react-icons/bi";
 import { AiOutlineSearch } from "react-icons/ai";
 import CountryComponent from "../components/CountryComponent";
-import Header from "../components/Header";
+import HeaderComponent from "../components/Header";
+import {
+	Input,
+	InputContainer,
+	SearchContainer,
+	Dropdown,
+	List,
+} from "../style/HomeStyles";
 
 const Home = () => {
 	const [search, setSearch] = useState("");
@@ -81,44 +88,41 @@ const Home = () => {
 
 	return (
 		<>
-			<Header />
-			<div className="search">
-				<div className="input-container">
+			<HeaderComponent />
+			<SearchContainer>
+				<InputContainer>
 					<AiOutlineSearch color="hsl(0, 0%, 52%)" />
-					<input
+					<Input
 						className="search-input"
 						type="text"
 						placeholder="Search for a country..."
 						value={search}
 						onChange={(e) => setSearch(e.target.value)}
 					/>
-				</div>
-				<div className="dropdown-container">
-					<select
-						className="select"
-						defaultValue="Filter by region"
-						onChange={(e) => setSelect(e.target.value)}
+				</InputContainer>
+				<Dropdown
+					value={select}
+					onChange={(e) => setSelect(e.target.value)}
+				>
+					<option
+						className="select-palceholder"
+						value=""
+						disabled
+						selected
+						hidden
 					>
-						<option
-							className="select-palceholder"
-							value=""
-							disabled
-							selected
-							hidden
-						>
-							Filter by region
-						</option>
-						<option value="Africa">Africa</option>
-						<option value="Americas">America</option>
-						<option value="Asia">Asia</option>
-						<option value="Europe">Europe</option>
-						<option value="Oceania">Oceania</option>
-					</select>
-				</div>
-			</div>
-			<div className="countries-container">
+						Filter by region
+					</option>
+					<option value="Africa">Africa</option>
+					<option value="Americas">America</option>
+					<option value="Asia">Asia</option>
+					<option value="Europe">Europe</option>
+					<option value="Oceania">Oceania</option>
+				</Dropdown>
+			</SearchContainer>
+			<List className="countries-container">
 				{loading ? <p>loading...</p> : displayItems()}
-			</div>
+			</List>
 		</>
 	);
 };
