@@ -26,8 +26,8 @@ const Home = () => {
 
 	useEffect(() => {
 		fetch("https://restcountries.eu/rest/v2/all")
-			.then((res) => res.json())
-			.then((data) => {
+			.then(res => res.json())
+			.then(data => {
 				data.forEach((item: any) => {
 					const newData = countryData;
 					newData.push(item);
@@ -35,21 +35,21 @@ const Home = () => {
 				});
 				setLoading(false);
 			})
-			.catch((e) => console.error(e));
+			.catch(e => console.error(e));
 	}, []);
 
 	useEffect(() => {
 		if (select.length > 0) {
 			fetch(`https://restcountries.eu/rest/v2/region/${select}`)
-				.then((res) => res.json())
-				.then((data) => {
+				.then(res => res.json())
+				.then(data => {
 					setCountryData(data);
 				})
-				.catch((e) => console.error(e));
+				.catch(e => console.error(e));
 		} else {
 			fetch("https://restcountries.eu/rest/v2/all")
-				.then((res) => res.json())
-				.then((data) => {
+				.then(res => res.json())
+				.then(data => {
 					data.forEach((item: any) => {
 						const newData = countryData;
 						newData.push(item);
@@ -57,23 +57,23 @@ const Home = () => {
 					});
 					setLoading(false);
 				})
-				.catch((e) => console.error(e));
+				.catch(e => console.error(e));
 		}
 	}, [select]);
 
 	useEffect(() => {
 		if (search.length > 0) {
 			fetch(`https://restcountries.eu/rest/v2/name/${search}`)
-				.then((res) => res.json())
-				.then((data) => {
+				.then(res => res.json())
+				.then(data => {
 					setCountryData(data);
 				})
-				.catch((e) => console.error(e));
+				.catch(e => console.error(e));
 		}
 		if (search.length === 0) {
 			fetch("https://restcountries.eu/rest/v2/all")
-				.then((res) => res.json())
-				.then((data) => {
+				.then(res => res.json())
+				.then(data => {
 					data.forEach((item: any) => {
 						const newData = countryData;
 						newData.push(item);
@@ -81,7 +81,7 @@ const Home = () => {
 					});
 					setLoading(false);
 				})
-				.catch((e) => console.error(e));
+				.catch(e => console.error(e));
 		}
 	}, [search]);
 
@@ -96,12 +96,12 @@ const Home = () => {
 						type="text"
 						placeholder="Search for a country..."
 						value={search}
-						onChange={(e) => setSearch(e.target.value)}
+						onChange={e => setSearch(e.target.value)}
 					/>
 				</InputContainer>
 				<Dropdown
 					value={select}
-					onChange={(e) => setSelect(e.target.value)}
+					onChange={e => setSelect(e.target.value)}
 				>
 					<option
 						className="select-palceholder"
@@ -119,9 +119,7 @@ const Home = () => {
 					<option value="Oceania">Oceania</option>
 				</Dropdown>
 			</SearchContainer>
-			<List className="countries-container">
-				{loading ? <p>loading...</p> : displayItems()}
-			</List>
+			<List>{loading ? <p>loading...</p> : displayItems()}</List>
 		</>
 	);
 };

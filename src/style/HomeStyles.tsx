@@ -4,8 +4,8 @@ export const SearchContainer = styled.div`
 	padding-top: 50px;
 	padding-left: 10%;
 	padding-right: 10%;
-	background: ${(props) => props.theme.background};
-	color: ${(props) => props.theme.text};
+	background: ${props => props.theme.background};
+	color: ${props => props.theme.text};
 	display: flex;
 	justify-content: space-between;
 
@@ -15,7 +15,7 @@ export const SearchContainer = styled.div`
 `;
 
 export const InputContainer = styled.div`
-	background-color: ${(props) => props.theme.elements};
+	background-color: ${props => props.theme.elements};
 	box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.05);
 	width: 20%;
 	padding: 15px 25px;
@@ -31,12 +31,12 @@ export const InputContainer = styled.div`
 
 export const Input = styled.input`
 	border: none;
-	background: ${(props) => props.theme.elements};
-	color: ${(props) => props.theme.text};
+	background: ${props => props.theme.elements};
+	color: ${props => props.theme.text};
 	font-weight: 600;
 	width: 90%;
 	margin-left: 10px;
-	${(props) => props.theme.text};
+	${props => props.theme.text};
 
 	&:focus {
 		outline: none;
@@ -61,11 +61,12 @@ export const Dropdown = styled.select`
 
 export const List = styled.div`
 	padding: 50px 10%;
-	background: ${(props) => props.theme.background};
-	color: ${(props) => props.theme.text};
+	background: ${props => props.theme.background};
+	color: ${props => props.theme.text};
 	display: grid;
 	column-gap: 6.55rem;
 	row-gap: 2rem;
 	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 	place-items: center;
+	min-height: 61.8vh;
 `;
